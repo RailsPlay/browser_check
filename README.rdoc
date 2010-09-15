@@ -1,0 +1,33 @@
+= Browser Checker
+
+This Rails extension checks that the users' browser supports Javascript features required by a site, and displays a warning message
+if not.
+
+== Features
+
+* Checks for lack of of Javascript support (i.e. +noscript+ tag).
+* Identifies browser and provides link to download the latest version.
+* Identifies browser platform and provides links to other supported browsers.
+
+== Installation
+
+Add this gem to your +Gemfile+:
+
+   gem 'browser_check'
+
+Then add the following line to your view template, within the +body+ element, at the point you'd like the warning message to appear (i.e. at the top or bottom):
+
+   <%= browser_check -%>
+
+== Dependencies
+
+* Rails 3.0
+* jQuery (for browser support)
+* HAML/SASS
+
+== Work-in-progress
+
+Author::    Steve Sloan (mailto:steve@conceivian.com)
+Website::   http://github.com/Conceivian/browser_check
+Copyright:: Copyright (c) 2010 Conceivian
+License::   MIT

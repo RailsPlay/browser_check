@@ -1,0 +1,62 @@
+%style{:type => 'text/css'}
+  :sass
+    .browser_unsupported
+      width: 100%
+      margin: 0
+      padding: 0
+      color: black
+      background: #fff3d2
+
+      #browser_fail, #no_javascript
+        width: 990px
+        margin: 0 auto
+        padding: 0.5em
+        text-align: center
+        p
+          margin: 0 0 0.5em
+        hr
+          display: none
+          margin: 0
+          height: 0
+
+- content_for :browsers do
+  - for browser in browser_info[:alternates]
+    = link_to browser[:name], browser[:link]
+
+- content_for :browser_fail do
+  .browser_unsupported
+    #browser_fail
+      %p<
+        Your browser does not support certain features that this website needs to function properly.
+      %p<
+        - if browser_info[:current]
+          Please&nbsp;
+          %a{ :href => browser_info[:current][:link] }> download the latest version of #{browser_info[:current][:name]}
+        - else
+          Please download the latest version of your browser from the official website
+
+        - if browser_info[:platform]
+          or use one of these supported browsers:
+          = yield(:browsers)
+        - else
+          \.
+
+%noscript
+  .browser_unsupported
+    #no_javascript
+      %p<
+        Your browser does not support JavaScript or it is not enabled, and this website will not function properly without it.
+      %p<
+        - if browser_info[:platform] && !browser_info[:current]
+          Please enable JavaScript in your browser settings, or use one of these supported browsers:
+          = yield(:browsers)
+        - else
+          Please enable JavaScript in your browser settings.
+
+:javascript
+  jQuery(document).ready( function() {
+    if ( !jQuery.support.boxModel ) {
+      var msg = '#{escape_javascript( yield(:browser_fail) )}';
+      $(msg).insertAfter($('noscript'))
+    }
+  })
