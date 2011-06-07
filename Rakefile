@@ -10,11 +10,9 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = 'http://github.com/Conceivian/browser_check'
   gem.authors = ['Steve Sloan']
 
-  gem.files = %w(
-    MIT-LICENSE README.rdoc
-  ) + Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*"]
-  gem.add_dependency 'haml', '~> 3.0.18'
-  gem.add_dependency 'railties', '~> 3.0.0'
-  gem.add_dependency 'actionpack', '~> 3.0.0'
+  gem.files = %w(MIT-LICENSE README.rdoc) + Dir["{lib,app}/**/*"]
+  gem.add_dependency 'haml'
+  gem.add_dependency 'railties', '>= 3.0'
+  gem.add_dependency 'actionpack', '>= 3.0'
 end
 Jeweler::GemcutterTasks.new
