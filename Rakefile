@@ -12,7 +12,7 @@ Jeweler::Tasks.new do |gem|
 
   gem.files = %w(MIT-LICENSE README.rdoc) + Dir["{lib,app}/**/*"]
   gem.add_dependency 'haml'
-  gem.add_dependency 'railties', '>= 3.0'
-  gem.add_dependency 'actionpack', '>= 3.0'
+  gem.add_dependency 'railties'
+  gem.add_dependency 'actionpack'
 end
 Jeweler::GemcutterTasks.new

@@ -1,9 +1,10 @@
 source :gemcutter
 
-gem 'railties', '~> 3.0'
-gem 'actionpack', '~> 3.0'
-gem 'haml', '~> 3.0.22', :require => ['haml', 'sass']
+gem 'railties'
+gem 'actionpack'
+gem 'haml'
 
 group :build do
+  gem 'rake', '~> 0.8.7'
   gem 'jeweler'
 end
